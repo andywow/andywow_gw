@@ -30,4 +30,10 @@ resource "google_container_cluster" "primary" {
   provisioner "local-exec" {
     command = "gcloud container clusters get-credentials ${var.cluster_name} --zone ${google_container_cluster.primary.zone}"
   }
+
+  # kubernetes settings
+  provisioner "local-exec" {
+    command = "kubectl apply -f ../kubernetes/cluster_init"
+  }
+
 }
