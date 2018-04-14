@@ -1,0 +1,4 @@
+project = "your-project"
+zone = "europe-west1-b"
+region = "europe-west1"
+gke_min_version = "1.8.8-gke.0"

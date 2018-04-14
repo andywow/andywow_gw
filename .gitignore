@@ -1,0 +1,6 @@
+# terraform work files
+*.tfvars
+.terraform*
+terraform.tfstate*
+backend.conf
+
