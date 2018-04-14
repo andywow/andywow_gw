@@ -31,7 +31,7 @@ variable "gitlab_node_count" {
 }
 
 variable "gitlab_node_disk_size" {
-  default     = 20
+  default     = 50
   description = "Gitlab node disk size"
 }
 
