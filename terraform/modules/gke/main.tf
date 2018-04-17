@@ -3,7 +3,7 @@ resource "google_container_cluster" "primary" {
   name               = "${var.cluster_name}"
   zone               = "${var.zone}"
   initial_node_count = "${var.initial_node_count}"
-  enable_legacy_abac = false
+  enable_legacy_abac = true
   min_master_version = "${var.gke_min_version}"
   node_version       = "${var.gke_min_version}"
   subnetwork         = "default"
@@ -11,6 +11,7 @@ resource "google_container_cluster" "primary" {
   node_config {
     disk_size_gb = "${var.node_disk_size}"
     machine_type = "${var.node_machine_type}"
+    labels       = "${var.labels}"
 
     oauth_scopes = [
       "https://www.googleapis.com/auth/compute",
@@ -36,4 +37,8 @@ resource "google_container_cluster" "primary" {
     command = "kubectl apply -f ../kubernetes/cluster_init"
   }
 
+  # tiller installation
+  provisioner "local-exec" {
+    command = "helm init --service-account tiller"
+  }
 }

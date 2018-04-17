@@ -13,6 +13,11 @@ variable "initial_node_count" {
   description = "Initial node count"
 }
 
+variable "labels" {
+  type    = "map"
+  default = {}
+}
+
 variable "node_disk_size" {
   default     = 20
   description = "Node disk size"
