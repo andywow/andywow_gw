@@ -19,6 +19,18 @@ variable "zone" {
   description = "Zone"
 }
 
+# root dns zone
+variable "dns_zone_root_name" {
+  default     = "andywow.io."
+  description = "DNS zone name"
+}
+
+# ci/cd dns zone
+variable "dns_zone_cicd_name" {
+  default     = "cicd.andywow.io."
+  description = "CI/CD DNS zone name"
+}
+
 # Gitlab settings
 variable "gitlab_cluster_name" {
   default     = "gitlab-cluster"
@@ -40,13 +52,33 @@ variable "gitlab_node_machine_type" {
   description = "Gitlab node machine type"
 }
 
-variable "dns_zone_root_name" {
-  default     = "andywow.io."
-  description = "DNS zone name"
+# dev dns zone
+variable "dns_zone_dev_name" {
+  default     = "dev.andywow.io."
+  description = "dev DNS zone name"
 }
 
-variable "dns_zone_cicd_name" {
-  default     = "cicd.andywow.io."
-  description = "DNS zone name"
+# dev cluster settings
+variable "dev_cluster_name" {
+  default     = "dev-cluster"
+  description = "Cluster name for DEV environment"
 }
+
+variable "dev_node_count" {
+  default     = 2
+  description = "dev node count"
+}
+
+variable "dev_node_disk_size" {
+  default     = 20
+  description = "dev node disk size"
+}
+
+variable "dev_node_machine_type" {
+  default     = "g1-small"
+  description = "dev node machine type"
+}
+
+
+
 

@@ -36,3 +36,28 @@ module "cicd_dns_zone" {
   ip_address  = "${module.gitlab_cluster.endpoint_ip}"
   dns_aliases = ["kubernetes"]
 }
+
+# dev cluster
+module "dev_cluster" {
+  source             = "./modules/gke"
+  zone               = "${var.zone}"
+  gke_min_version    = "${var.gke_min_version}"
+  initial_node_count = "${var.dev_node_count}"
+  cluster_name       = "${var.dev_cluster_name}"
+  node_machine_type  = "${var.dev_node_machine_type}"
+  node_disk_size     = "${var.dev_node_disk_size}"
+
+  labels = {
+    "env" = "dev"
+    "node_group" = "search_engine"
+  }
+}
+
+# dev dns records
+module "dev_dns_zone" {
+  source      = "./modules/dns"
+  name        = "dev-zone"
+  dns_name    = "${var.dns_zone_dev_name}"
+  ip_address  = "${module.dev_cluster.endpoint_ip}"
+  dns_aliases = ["kubernetes"]
+}
