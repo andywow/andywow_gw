@@ -40,4 +40,13 @@ variable "gitlab_node_machine_type" {
   description = "Gitlab node machine type"
 }
 
+variable "dns_zone_root_name" {
+  default     = "andywow.io."
+  description = "DNS zone name"
+}
+
+variable "dns_zone_cicd_name" {
+  default     = "cicd.andywow.io."
+  description = "DNS zone name"
+}
 
