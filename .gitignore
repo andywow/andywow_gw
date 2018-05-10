@@ -4,3 +4,6 @@
 terraform.tfstate*
 backend.conf
 
+# helm
+requirements.lock
+*.tgz
