@@ -5,11 +5,8 @@ provider "google" {
   region  = "${var.region}"
 }
 
-# root dns zone
-module "root_dns_zone" {
-  source   = "./modules/dns"
-  name     = "root-zone"
-  dns_name = "${var.dns_zone_root_name}"
+resource "google_compute_address" "gitlab" {
+  name = "gitlab-ingress-address"
 }
 
 # gitlab cluster
@@ -28,15 +25,6 @@ module "gitlab_cluster" {
   }
 }
 
-# gitlab dns records
-module "cicd_dns_zone" {
-  source      = "./modules/dns"
-  name        = "cicd-zone"
-  dns_name    = "${var.dns_zone_cicd_name}"
-  ip_address  = "${module.gitlab_cluster.endpoint_ip}"
-  dns_aliases = ["kubernetes"]
-}
-
 # dev cluster
 module "dev_cluster" {
   source             = "./modules/gke"
@@ -48,16 +36,20 @@ module "dev_cluster" {
   node_disk_size     = "${var.dev_node_disk_size}"
 
   labels = {
-    "env" = "dev"
+    "env"        = "dev"
     "node_group" = "search_engine"
   }
 }
 
-# dev dns records
-module "dev_dns_zone" {
-  source      = "./modules/dns"
-  name        = "dev-zone"
-  dns_name    = "${var.dns_zone_dev_name}"
-  ip_address  = "${module.dev_cluster.endpoint_ip}"
-  dns_aliases = ["kubernetes"]
+# root dns zone
+module "root_dns_zone" {
+  source   = "./modules/dns"
+  name     = "root-zone"
+  dns_name = "${var.dns_zone_root_name}"
+
+  dns_aliases = {
+    "kubernetes-cicd" = "${module.gitlab_cluster.endpoint_ip}"
+    "*.cicd"          = "${google_compute_address.gitlab.address}"
+    "kubernetes-dev"  = "${module.dev_cluster.endpoint_ip}"
+  }
 }

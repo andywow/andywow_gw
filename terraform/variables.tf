@@ -21,14 +21,8 @@ variable "zone" {
 
 # root dns zone
 variable "dns_zone_root_name" {
-  default     = "andywow.io."
+  default     = "your.zone.com."
   description = "DNS zone name"
-}
-
-# ci/cd dns zone
-variable "dns_zone_cicd_name" {
-  default     = "cicd.andywow.io."
-  description = "CI/CD DNS zone name"
 }
 
 # Gitlab settings
@@ -52,10 +46,9 @@ variable "gitlab_node_machine_type" {
   description = "Gitlab node machine type"
 }
 
-# dev dns zone
-variable "dns_zone_dev_name" {
-  default     = "dev.andywow.io."
-  description = "dev DNS zone name"
+variable "gitlab_nginx_ingress_ip" {
+  default     = "127.0.0.1"
+  description = "Gitlab ingress nginx ip"
 }
 
 # dev cluster settings
@@ -65,7 +58,7 @@ variable "dev_cluster_name" {
 }
 
 variable "dev_node_count" {
-  default     = 2
+  default     = 1
   description = "dev node count"
 }
 
@@ -78,7 +71,3 @@ variable "dev_node_machine_type" {
   default     = "g1-small"
   description = "dev node machine type"
 }
-
-
-
-
