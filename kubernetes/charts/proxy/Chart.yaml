@@ -1,0 +1,8 @@
+---
+name: proxy
+version: 1.0.0
+description: proxy
+maintainers:
+  - name: Andrey Susoev
+    email: andywow@mail.com
+appVersion: 1.0
