@@ -92,3 +92,13 @@ variable "ops_node_machine_type" {
   default     = "n1-standard-2"
   description = "ops node machine type"
 }
+
+variable "ops_region" {
+  default     = "europe-west2"
+  description = "ops region"
+}
+
+variable "ops_zone" {
+  default     = "europe-west2-c"
+  description = "ops zone"
+}

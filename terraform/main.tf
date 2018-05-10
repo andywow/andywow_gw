@@ -9,6 +9,11 @@ resource "google_compute_address" "gitlab" {
   name = "gitlab-ingress-address"
 }
 
+resource "google_compute_address" "ops" {
+  name   = "ops-ingress-address"
+  region = "${var.ops_region}"
+}
+
 # gitlab cluster
 module "gitlab_cluster" {
   source             = "./modules/gke"
@@ -44,7 +49,7 @@ module "dev_cluster" {
 # ops cluster
 module "ops_cluster" {
   source             = "./modules/gke"
-  zone               = "${var.zone}"
+  zone               = "${var.ops_zone}"
   gke_min_version    = "${var.gke_min_version}"
   initial_node_count = "${var.ops_node_count}"
   cluster_name       = "${var.ops_cluster_name}"
@@ -67,5 +72,6 @@ module "root_dns_zone" {
     "*.cicd"          = "${google_compute_address.gitlab.address}"
     "kubernetes-dev"  = "${module.dev_cluster.endpoint_ip}"
     "kubernetes-ops"  = "${module.ops_cluster.endpoint_ip}"
+    "kibana"          = "${google_compute_address.ops.address}"
   }
 }
