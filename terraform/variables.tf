@@ -71,3 +71,24 @@ variable "dev_node_machine_type" {
   default     = "g1-small"
   description = "dev node machine type"
 }
+
+# ops cluster settings
+variable "ops_cluster_name" {
+  default     = "ops-cluster"
+  description = "Cluster name for LOGGING/MONITORING"
+}
+
+variable "ops_node_count" {
+  default     = 1
+  description = "ops node count"
+}
+
+variable "ops_node_disk_size" {
+  default     = 100
+  description = "ops node disk size"
+}
+
+variable "ops_node_machine_type" {
+  default     = "n1-standard-2"
+  description = "ops node machine type"
+}

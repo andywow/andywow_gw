@@ -41,6 +41,21 @@ module "dev_cluster" {
   }
 }
 
+# ops cluster
+module "ops_cluster" {
+  source             = "./modules/gke"
+  zone               = "${var.zone}"
+  gke_min_version    = "${var.gke_min_version}"
+  initial_node_count = "${var.ops_node_count}"
+  cluster_name       = "${var.ops_cluster_name}"
+  node_machine_type  = "${var.ops_node_machine_type}"
+  node_disk_size     = "${var.ops_node_disk_size}"
+
+  labels = {
+    "node_group" = "ops"
+  }
+}
+
 # root dns zone
 module "root_dns_zone" {
   source   = "./modules/dns"
