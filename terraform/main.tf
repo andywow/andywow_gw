@@ -66,5 +66,6 @@ module "root_dns_zone" {
     "kubernetes-cicd" = "${module.gitlab_cluster.endpoint_ip}"
     "*.cicd"          = "${google_compute_address.gitlab.address}"
     "kubernetes-dev"  = "${module.dev_cluster.endpoint_ip}"
+    "kubernetes-ops"  = "${module.ops_cluster.endpoint_ip}"
   }
 }
