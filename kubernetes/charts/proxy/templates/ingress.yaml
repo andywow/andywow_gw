@@ -23,3 +23,17 @@ spec:
         backend:
           serviceName: efk-kibana
           servicePort: 443
+  - host: prometheus.{{ .Values.baseDomain }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: monitoring-prometheus-server
+          servicePort: 80
+  - host: alertmanager.{{ .Values.baseDomain }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: monitoring-prometheus-alertmanager
+          servicePort: 80
