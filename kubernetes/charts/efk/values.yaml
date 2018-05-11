@@ -1,0 +1,8 @@
+---
+kibana:
+  ingress:
+    enabled: false
+  #  hosts:
+  #    - kibana.andywow.xyz
+  env:
+    ELASTICSEARCH_URL: http://efk-elasticsearch:9200
