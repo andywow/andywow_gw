@@ -1,7 +1,14 @@
 nginx-ingress:
   controller:
+    config:
+      body-size: "64m"
+      client-max-body-size: "50m"
+      enable-vts-status: "false"
+      proxy-body-size: "1024m"
+      server-name-hash-bucket-size: "256"
     service:
       type: LoadBalancer
+      # use GCE pre-allocated IP address
       externalTrafficPolicy: Local
       loadBalancerIP: 35.234.157.92
 
