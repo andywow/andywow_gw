@@ -74,5 +74,8 @@ module "root_dns_zone" {
     "kubernetes-ops"  = "${module.ops_cluster.endpoint_ip}"
     "kibana"          = "${google_compute_address.ops.address}"
     "elasticsearch"   = "${google_compute_address.ops.address}"
+    "prometheus"      = "${google_compute_address.ops.address}"
+    "alertmanager"    = "${google_compute_address.ops.address}"
+    "grafana"         = "${google_compute_address.ops.address}"
   }
 }
