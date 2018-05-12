@@ -11,5 +11,3 @@ nginx-ingress:
       # use GCE pre-allocated IP address
       externalTrafficPolicy: Local
       loadBalancerIP: 35.234.157.92
-
-baseDomain: andywow.xyz
