@@ -1,8 +1,9 @@
 ---
+baseDomain: andywow.xyz
 kibana:
   ingress:
     enabled: false
-  #  hosts:
-  #    - kibana.andywow.xyz
+  service:
+    type: ClusterIP
   env:
     ELASTICSEARCH_URL: http://efk-elasticsearch:9200
