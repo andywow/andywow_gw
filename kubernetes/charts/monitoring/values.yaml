@@ -1,4 +1,5 @@
 ---
+baseDomain: andywow.xyz
 prometheus:
   alertmanagerFiles:
     alertmanager.yml:
@@ -291,3 +292,18 @@ prometheus:
             - source_labels: [__meta_kubernetes_pod_name]
               action: replace
               target_label: kubernetes_pod_name
+
+        - job_name: 'federate'
+          scrape_interval: 30s
+
+          honor_labels: true
+          metrics_path: '/federate'
+
+          params:
+            'match[]':
+              - '{job="prometheus"}'
+              - '{__name__=~"job:.*"}'
+
+          static_configs:
+            - targets:
+              - 'prometheus.dev.andywow.xyz:80'

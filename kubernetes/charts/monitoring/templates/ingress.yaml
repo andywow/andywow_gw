@@ -1,0 +1,25 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ template "monitoring.fullname" . }}
+  labels:
+    app: {{ template "monitoring.fullname" . }}
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  rules:
+  - host: prometheus.{{ .Values.baseDomain }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: monitoring-prometheus-server
+          servicePort: 80
+  - host: alertmanager.{{ .Values.baseDomain }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: monitoring-prometheus-alertmanager
+          servicePort: 80
