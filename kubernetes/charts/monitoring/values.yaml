@@ -301,9 +301,11 @@ prometheus:
 
           params:
             'match[]':
-              - '{job="prometheus"}'
-              - '{__name__=~"job:.*"}'
+              - '{app="search-engine"}'
+              #- '{job="prometheus"}'
+              #- '{__name__=~"job:.*"}'
 
           static_configs:
             - targets:
               - 'prometheus.dev.andywow.xyz:80'
+              - 'prometheus.prod.andywow.xyz:80'
