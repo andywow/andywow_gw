@@ -1,4 +1,8 @@
 nginx-ingress:
+  defaultBackend:
+    resources:
+      requests:
+        cpu: "1m"
   controller:
     config:
       body-size: "64m"
@@ -10,4 +14,5 @@ nginx-ingress:
       type: LoadBalancer
       # use GCE pre-allocated IP address
       externalTrafficPolicy: Local
-      loadBalancerIP: 35.234.157.92
+      # must specify using cmd line
+      #loadBalancerIP: 35.234.157.92
