@@ -1,5 +1,5 @@
 ---
-name: EFK
+name: efk
 version: 1.0.0
 description: EFK stack chart
 maintainers:
