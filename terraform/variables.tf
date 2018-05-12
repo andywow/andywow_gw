@@ -46,11 +46,6 @@ variable "gitlab_node_machine_type" {
   description = "Gitlab node machine type"
 }
 
-variable "gitlab_nginx_ingress_ip" {
-  default     = "127.0.0.1"
-  description = "Gitlab ingress nginx ip"
-}
-
 # dev cluster settings
 variable "dev_cluster_name" {
   default     = "dev-cluster"
@@ -68,8 +63,18 @@ variable "dev_node_disk_size" {
 }
 
 variable "dev_node_machine_type" {
-  default     = "g1-small"
+  default     = "n1-standard-1"
   description = "dev node machine type"
+}
+
+variable "dev_region" {
+  default     = "europe-west3"
+  description = "dev region"
+}
+
+variable "dev_zone" {
+  default     = "europe-west3-c"
+  description = "dev zone"
 }
 
 # ops cluster settings
