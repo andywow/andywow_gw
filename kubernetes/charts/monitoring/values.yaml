@@ -1,5 +1,20 @@
 ---
 baseDomain: andywow.xyz
+grafana:
+  # change this
+  adminPassword: admin_123
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+        - name: Prometheus
+          type: prometheus
+          url: http://monitoring-prometheus-server
+          access: proxy
+          isDefault: true
+  persistence:
+    accessModes: [ReadWriteOnce]
+    enabled: true
 prometheus:
   alertmanagerFiles:
     alertmanager.yml:

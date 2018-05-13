@@ -23,3 +23,10 @@ spec:
         backend:
           serviceName: monitoring-prometheus-alertmanager
           servicePort: 80
+  - host: grafana.{{ .Values.baseDomain }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: monitoring-grafana
+          servicePort: 80
