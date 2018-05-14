@@ -1,0 +1,8 @@
+---
+name: cicd
+version: 1.0.0
+description: CI/CD chart
+maintainers:
+  - name: Andrey Susoev
+    email: andywow@mail.com
+appVersion: 1.0

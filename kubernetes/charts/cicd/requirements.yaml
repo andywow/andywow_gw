@@ -1,0 +1,4 @@
+dependencies:
+  - name: gitlab-omnibus
+    version: 0.1.37
+    repository: https://charts.gitlab.io
