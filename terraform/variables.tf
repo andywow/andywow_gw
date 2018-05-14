@@ -46,6 +46,16 @@ variable "gitlab_node_machine_type" {
   description = "Gitlab node machine type"
 }
 
+variable "gitlab_region" {
+  default     = "europe-west1"
+  description = "Region"
+}
+
+variable "gitlab_zone" {
+  default     = "europe-west1-b"
+  description = "Zone"
+}
+
 # dev cluster settings
 variable "dev_cluster_name" {
   default     = "dev-cluster"

@@ -7,6 +7,7 @@ provider "google" {
 
 resource "google_compute_address" "gitlab" {
   name = "gitlab-ingress-address"
+  region = "${var.gitlab_region}"
 }
 
 resource "google_compute_address" "dev" {
@@ -22,7 +23,7 @@ resource "google_compute_address" "ops" {
 # gitlab cluster
 module "gitlab_cluster" {
   source             = "./modules/gke"
-  zone               = "${var.zone}"
+  zone               = "${var.gitlab_zone}"
   gke_min_version    = "${var.gke_min_version}"
   initial_node_count = "${var.gitlab_node_count}"
   cluster_name       = "${var.gitlab_cluster_name}"
