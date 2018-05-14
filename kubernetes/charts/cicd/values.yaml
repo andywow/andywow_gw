@@ -2,7 +2,4 @@ gitlab-omnibus:
   baseDomain: cicd.andywow.xyz
   legoEmail: 1andreysusoev@gmail.com
   baseIP: 35.195.84.99
-  gitlabCEImage: gitlab/gitlab-ce:10.6.4-ce.0
-  gitlab-runner:
-    runners:
-      privileged: true
+  gitlabCEImage: gitlab/gitlab-ce:10.7.3-ce.0
