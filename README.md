@@ -144,6 +144,13 @@ alertmanager.* | свои данные для отправки алертов
 
 Дашборды в `grafana` устанавливаются автоматически.
 
+Адреса:
+
+http://prometheus.andywow.xyz
+http://alertmanager.andywow.xyz
+http://grafana.andywow.xyz
+http://kibana.andywow.xyz
+
 #### TODO OPS
 - попробовать решение Фланты на базе `fluentd` и `clickhouse` для логирования
 
@@ -160,6 +167,9 @@ alertmanager.* | свои данные для отправки алертов
 - `prometheus`, который будет собирать метрики с DEV-кластера. Из этого
 `prometheus` будет собирать метрики `prometheus`, установленный в `OPS`-кластере.
 
+http://prometheus.dev.andywow.xyz
+http://ui-staging.dev.andywow.xyz
+http://ui.dev.andywow.xyz
 
 
 
