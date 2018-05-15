@@ -15,7 +15,6 @@ before_install:
   - sudo apt install -y wget
 
 install:
-
   # making dirs
   - mkdir -p ~/${DIR_BIN} ~/${DIR_TMP}
 
@@ -30,7 +29,6 @@ install:
   - ~/${DIR_BIN}/tflint --version
 
 script:
-
   # terraform validate
   - rm terraform/backend.tf
   - cd terraform
