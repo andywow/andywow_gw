@@ -7,3 +7,6 @@ backend.conf
 # helm
 requirements.lock
 *.tgz
+
+# temp config
+kubernetes/config
