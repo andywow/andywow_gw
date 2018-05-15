@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/andywow/andywow_gw.svg?branch=master)](https://travis-ci.org/andywow/andywow_gw)
+
 # Выпускная работа для проекта OTUS ( CI/CD, monitoring, logging для 2-х приложений)
 
 ## Предварительные требования
