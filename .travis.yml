@@ -46,6 +46,7 @@ script:
   - ~/${DIR_BIN}/tflint --var-file=terraform.tfvars.example --error-with-issues
 
   # helm validate
+  - cd ..
   - find kubernetes/charts -mindepth 1 -maxdepth 1 -type d | xargs -n1 ~/${DIR_BIN}/helm lint
 
 notifications:
