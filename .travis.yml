@@ -35,7 +35,7 @@ install:
   - wget https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz -P ~/${DIR_TMP}
   - tar -zxvf ~/${DIR_TMP}/helm-v${HELM_VERSION}-linux-amd64.tar.gz -C ~/${DIR_BIN}
   - mv ~/${DIR_BIN}/linux-amd64/helm ~/${DIR_BIN}
-  - ~/${DIR_BIN}/helm version
+  - ~/${DIR_BIN}/helm init --client-only
 
 script:
   # terraform validate
