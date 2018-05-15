@@ -147,8 +147,11 @@ alertmanager.* | свои данные для отправки алертов
 Адреса:
 
 http://prometheus.andywow.xyz
+
 http://alertmanager.andywow.xyz
+
 http://grafana.andywow.xyz
+
 http://kibana.andywow.xyz
 
 #### TODO OPS
@@ -168,7 +171,9 @@ http://kibana.andywow.xyz
 `prometheus` будет собирать метрики `prometheus`, установленный в `OPS`-кластере.
 
 http://prometheus.dev.andywow.xyz
+
 http://ui-staging.dev.andywow.xyz
+
 http://ui.dev.andywow.xyz
 
 
