@@ -12,9 +12,26 @@ grafana:
           url: http://monitoring-prometheus-server
           access: proxy
           isDefault: true
+  dashboardProviders:
+    dashboardproviders.yaml:
+      apiVersion: 1
+      providers:
+      - name: 'default'
+        orgId: 1
+        folder: ''
+        type: file
+        disableDeletion: false
+        editable: true
+        options:
+          path: /var/lib/grafana/dashboards
+  dashboards:
+    kubernetes-monitoring:
+      gnetId: 315
+      revision: 3
+      datasource: Prometheus
   persistence:
     accessModes: [ReadWriteOnce]
-    enabled: true
+    enabled: false
 prometheus:
   alertmanagerFiles:
     alertmanager.yml:
@@ -44,7 +61,7 @@ prometheus:
       global:
         ## How frequently to scrape targets by default
         ##
-        scrape_interval: 1m
+        scrape_interval: 30s
         ## How long until a scrape request times out
         ##
         scrape_timeout: 10s
@@ -317,10 +334,10 @@ prometheus:
           params:
             'match[]':
               - '{app="search-engine"}'
+              - '{job="kubernetes-nodes-cadvisor"}'
               #- '{job="prometheus"}'
               #- '{__name__=~"job:.*"}'
 
           static_configs:
             - targets:
               - 'prometheus.dev.andywow.xyz:80'
-              - 'prometheus.prod.andywow.xyz:80'
