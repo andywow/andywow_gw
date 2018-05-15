@@ -31,7 +31,8 @@ install:
 
   # getting helm
   - wget https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz -P ~/${DIR_TMP}
-  - tar -zxvf ~/${DIR_TMP}/helm-v${HELM_VERSION}-linux-amd64.tar.gz linux-amd64/helm -C ~/${DIR_BIN}
+  - tar -zxvf ~/${DIR_TMP}/helm-v${HELM_VERSION}-linux-amd64.tar.gz linux-amd64/helm
+  - mv ~/${DIR_TMP}/linux-amd64/helm ~/${DIR_BIN}
   - ~/${DIR_BIN}/helm --version
 
 script:
