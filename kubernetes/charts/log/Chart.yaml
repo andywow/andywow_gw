@@ -1,5 +1,5 @@
 ---
-name: Log
+name: log
 version: 1.0.0
 description: logging stack chart
 maintainers:
