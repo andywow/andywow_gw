@@ -4,6 +4,8 @@ dist: trusty
 # running each build in docker container - cause speed
 sudo: false
 
+language: shell
+
 env:
   global:
     - DIR_BIN=~/bin
@@ -32,6 +34,7 @@ install:
   # getting helm
   - wget https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz -P ~/${DIR_TMP}
   - tar -zxvf ~/${DIR_TMP}/helm-v${HELM_VERSION}-linux-amd64.tar.gz linux-amd64/helm -C ~/${DIR_TMP}
+  - ls -l ~/${DIR_TMP}
   - mv ~/${DIR_TMP}/linux-amd64/helm ~/${DIR_BIN}
   - ~/${DIR_BIN}/helm --version
 
