@@ -10,6 +10,7 @@ env:
     - DIR_TMP=~/tmp
     - TERRAFORM_VERSION=0.11.2
     - TERRAFORM_LINT_VERSION=0.5.4
+    - HELM_VERSION=2.9.1
 
 before_install:
   - sudo apt install -y wget
@@ -28,6 +29,16 @@ install:
   - unzip ~/${DIR_TMP}/tflint_linux_amd64.zip -d ~/${DIR_BIN}
   - ~/${DIR_BIN}/tflint --version
 
+  # getting terraform lint
+  - wget https://github.com/wata727/tflint/releases/download/v${TERRAFORM_LINT_VERSION}/tflint_linux_amd64.zip -P ~/${DIR_TMP}
+  - unzip ~/${DIR_TMP}/tflint_linux_amd64.zip -d ~/${DIR_BIN}
+  - ~/${DIR_BIN}/tflint --version
+
+  # getting helm
+  - wget https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz -P ~/${DIR_TMP}
+  - unzip ~/${DIR_TMP}/helm-v${HELM_VERSION}-linux-amd64.tar.gz -d ~/${DIR_BIN}
+  - ~/${DIR_BIN}/helm --version
+
 script:
   # terraform validate
   - rm terraform/backend.tf
@@ -35,6 +46,9 @@ script:
   - ~/${DIR_BIN}/terraform init
   - ~/${DIR_BIN}/terraform validate --var-file=terraform.tfvars.example
   - ~/${DIR_BIN}/tflint --var-file=terraform.tfvars.example --error-with-issues
+
+  # helm validate
+  - find kubernetes/charts -mindepth 1 -maxdepth 1 -type d | xargs -n1 ~/${DIR_BIN}/helm lint
 
 notifications:
   email: false
