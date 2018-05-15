@@ -1,0 +1,8 @@
+---
+name: monitoring
+version: 1.0.0
+description: Monitoring chart
+maintainers:
+  - name: Andrey Susoev
+    email: andywow@mail.com
+appVersion: 1.0

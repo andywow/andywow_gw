@@ -1,0 +1,7 @@
+---
+fluentd-elasticsearch:
+  elasticsearch:
+    host: elasticsearch.andywow.xyz
+    port: 80
+  rbac:
+    create: false

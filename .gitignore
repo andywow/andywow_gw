@@ -1,0 +1,12 @@
+# terraform work files
+*.tfvars
+.terraform*
+terraform.tfstate*
+backend.conf
+
+# helm
+requirements.lock
+*.tgz
+
+# temp config
+kubernetes/config
