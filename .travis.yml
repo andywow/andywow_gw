@@ -29,11 +29,6 @@ install:
   - unzip ~/${DIR_TMP}/tflint_linux_amd64.zip -d ~/${DIR_BIN}
   - ~/${DIR_BIN}/tflint --version
 
-  # getting terraform lint
-  - wget https://github.com/wata727/tflint/releases/download/v${TERRAFORM_LINT_VERSION}/tflint_linux_amd64.zip -P ~/${DIR_TMP}
-  - unzip ~/${DIR_TMP}/tflint_linux_amd64.zip -d ~/${DIR_BIN}
-  - ~/${DIR_BIN}/tflint --version
-
   # getting helm
   - wget https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz -P ~/${DIR_TMP}
   - unzip ~/${DIR_TMP}/helm-v${HELM_VERSION}-linux-amd64.tar.gz -d ~/${DIR_BIN}
