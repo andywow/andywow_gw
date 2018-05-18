@@ -1,5 +1,17 @@
+baseDomain: cicd.andywow.xyz
 gitlab-omnibus:
   baseDomain: cicd.andywow.xyz
   legoEmail: 1andreysusoev@gmail.com
   baseIP: 35.195.84.99
   gitlabCEImage: gitlab/gitlab-ce:10.7.3-ce.0
+chartmuseum:
+  env:
+    open:
+      DISABLE_API: false
+      DISABLE_METRICS: false
+      STORAGE: local
+    secret:
+      BASIC_AUTH_USER: gitlab
+      BASIC_AUTH_PASS: gitlab_123
+  persistence:
+    enabled: true
