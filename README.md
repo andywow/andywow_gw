@@ -98,6 +98,8 @@ Login/pass для тестового пользователя: `otusguest/otusgu
 Приложения собираются в `Docker`-образы, а затем деплоятся с помощью `helm` в
 `kubernetes`.
 
+`helm`-чарты сохраняются в `chartmuseum` репозиторий.
+
 Делал отдельные развертывания окружений под каждое приложение на стадии `review`,
 т.к. допускалось, что приложения пишут разные разработчики.
 
@@ -112,10 +114,13 @@ XCI_GCE_ZONE_DEV|GCE-зона DEV-кластера
 XCI_GCE_ZONE_PROD|GCE-зона PROD-кластера
 XCI_REGISTRY_PASSWORD|Отдельный пользователь `gitlab` для того, чтобы соседний `k8s`-кластер мог делать `pull` Docker-образов из нашего `registry`
 XCI_REGISTRY_USER|Пароль пользователя из предыдущего пункта
-
+DOCKER_HELM_VERSION|Версия Docker-образа с helm (devth/helm)
+DOCKER_HADOLINT_VERSION|Версия Docker-образа с hadolint (hadolint/hadolint)
+CHARTMUSEUM_ADDRESS|Внутренний адрес chartmusem (host:port)
+CHARTMUSEUM_USER|Имя пользователя chartmuseum
+CHARTMUSEUM_PASSWORD|Пароль пользователя chartmuseum
 
 #### TODO CI/CD
-- попробовать установить `ChartMuseum` и релизить chart-ы в него
 - попробовать Docker security тесты, Code security тесты.
 - попробовать использовать встроенный в `gitlab` функционал для деплоя в `k8s`
 - попробовать разворачивать `gitlab-runner` chart на `dev` кластер и запускать
