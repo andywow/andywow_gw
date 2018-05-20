@@ -119,6 +119,13 @@ DOCKER_HADOLINT_VERSION|Версия Docker-образа с hadolint (hadolint/h
 CHARTMUSEUM_ADDRESS|Внутренний адрес chartmusem (host:port)
 CHARTMUSEUM_USER|Имя пользователя chartmuseum
 CHARTMUSEUM_PASSWORD|Пароль пользователя chartmuseum
+XCI_GITLAB_TOKEN|Token gitlab пользователя с возможность устанавливать значения переменных CI/CD проекта
+
+В настройках каждого проекта должны быть заданы следующие переменные:
+Переменная|Описание
+-|-
+DOCKER_IMAGE_NAME_POLICY|Политика версионирования docker-образов (major|minor|patch для формата версии x.x.x)
+DOCKER_IMAGE_VERSION|Текущий номер версии (устанавливается один раз - далее знкачения меняются автоматически)
 
 #### TODO CI/CD
 - попробовать Docker security тесты, Code security тесты.
