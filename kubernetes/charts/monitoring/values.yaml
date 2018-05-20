@@ -57,7 +57,16 @@ prometheus:
   rbac:
     create: false
   serverFiles:
-    alerts: {}
+    alerts:
+      groups:
+        - name: alert.rules
+          rules:
+          - alert: UI HTTP slow answer
+            expr: histogram_quantile(0.95, sum(rate(web_page_gen_time_bucket{kubernetes_namespace="production-search-engine"}[5m])) by (le)) > 0.05
+            for: 1m
+            annotations:
+              description: '{{ $labels.instance }} of job {{ $labels.job }} takes long reponses'
+              summary: 'HTTP response time of UI service is high on production'
     rules: {}
 
     prometheus.yml:
